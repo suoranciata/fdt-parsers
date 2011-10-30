@@ -20,10 +20,10 @@ get = (resource, callback) ->
 util = require 'util'
 
 parsers =
-    panel : (require './parsers/panel')
-    m     : (require './parsers/m.aspx')
-    HTM   : (require './parsers/HTM.aspx')
-    HT    : (require './parsers/HT.aspx')
+    panel : (require './panel')
+    m     : (require './m.aspx')
+    HTM   : (require './HTM.aspx')
+    HT    : (require './HT.aspx')
 
 get '/', (body) ->
     panel = parsers.panel.parse body
