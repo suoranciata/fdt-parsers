@@ -35,5 +35,10 @@ get '/', (body) ->
                 if risposta.haSubTree
                     get "/HT.aspx?m_id=#{risposta.m_id}", (body) ->
                         console.log "parse: #{risposta.m_id}"
-                        subtree = parsers.HT.parse body
-                        console.log util.inspect subtree, no, 10
+                        try
+                            subtree = parsers.HT.parse body
+                            console.log util.inspect subtree,no, 10
+                        catch e
+                            console.log "errore in #{risposta.m_id}"
+                            throw e
+
