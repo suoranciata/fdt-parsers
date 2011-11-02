@@ -74,8 +74,8 @@ parse = (page) ->
                     result.pagina = match[1]
                     result.nPagine = match[2]
                     ctx.stage++
-            when stages.END
-                break
+        if ctx.stages is stages.END
+            break
     return result
 
 exports.parse = parse

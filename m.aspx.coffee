@@ -92,7 +92,9 @@ parse = (page) ->
             when stages.TESTO_2
                 result.testo = (line.match reTestoContent)[1] if reTestoContent.test line
                 result.testo = line if not result.testo
-                break
+                ctx.stage++
+        if ctx.stage is stages.END
+            break
     return result
 
 exports.parse = parse
