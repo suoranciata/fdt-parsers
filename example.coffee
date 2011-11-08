@@ -25,9 +25,10 @@ parsers =
     HTM   : require './HTM.aspx'
     HT    : require './HT.aspx'
     forum : require './forum'
+    ms    : require './ms.aspx'
 
 
-
+###
 get '/', (body) ->
     panel = parsers.panel.parse body
     console.log util.inspect panel.threads[0]
@@ -47,3 +48,12 @@ get '/', (body) ->
 
 get '/hp.aspx?f_id=3868', (body) ->
     console.log util.inspect parsers.forum.parse body
+###
+
+get '/', (body) ->
+    panel = parsers.panel.parse body
+    for t in panel.threads
+        if t.n_reply > 15
+            get "/ms.aspx?m_id=#{t.m_id}", (body) ->
+                console.log util.inspect parsers.ms.parse body
+            break

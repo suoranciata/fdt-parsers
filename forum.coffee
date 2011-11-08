@@ -9,7 +9,8 @@ parse = (body) ->
 		threads : []
 		pagina : 0
 		nPagine : 0
-	for line in body.split /\n/
+	for line in body.split /[\r\n]/
+		continue if line is ''
 		match = line.match rePager
 		if match
 			forum.pagina = match[1]
