@@ -15,7 +15,6 @@ parse = (body) ->
     		break
     for msg in msgs.slice 1
         oneline = msg.replace /[\n\r]/,' '
-        console.log oneline
         post = {}
         post.titolo = (oneline.match /<!--titolo -->[\s\t]+<b>[\s\t]+(.{1,80})<\/b>[\s\t]+<!-- data -->/)[1].trim()
         post.data = (oneline.match /<!-- data -->[\s\t]+del[\s\t]+(\d+\s\w+\s\d+\s\d+\.\d+)[\s\t]+<\/td>/)[1]
